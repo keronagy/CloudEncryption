@@ -6,6 +6,7 @@
 package cloudencryption;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.FontFormatException;
 import java.io.File;
@@ -45,93 +46,91 @@ public class LoginController implements Initializable {
     @FXML
     private JFXButton StartBtn;
     @FXML
-    private JFXTextField NameTxt;
+    private JFXTextField EmailTxt;
     @FXML
     private Label error;
-//    @FXML
-//    private JFXTextField IPTxt;
-//    @FXML
-//    private JFXTextField PortTxt;
+    @FXML
+    private JFXPasswordField PassTxt;
+    
+    
 
-    private Pattern VALID_IPV4_PATTERN = null;
+    private Pattern VALID_EMAIL_PATTERN = null;
     private Pattern VALID_PORT_NUMBER = null;
-    private final String IPADDRESS_PATTERN = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
+    private final String Email_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
     private final String PORT_NUMBER = "^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$";
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        VALID_IPV4_PATTERN = Pattern.compile(IPADDRESS_PATTERN, Pattern.CASE_INSENSITIVE);
-        VALID_PORT_NUMBER = Pattern.compile(PORT_NUMBER, Pattern.CASE_INSENSITIVE);
+        VALID_EMAIL_PATTERN = Pattern.compile(Email_PATTERN, Pattern.CASE_INSENSITIVE);
+        //VALID_PORT_NUMBER = Pattern.compile(PORT_NUMBER, Pattern.CASE_INSENSITIVE);
 //        
 //        IPTxt.setText("127.0.0.1");
 //        PortTxt.setText("2500");
 //        
 //        IPTxt.setOnKeyPressed(e->onEnter(e));
 //        PortTxt.setOnKeyPressed(e->onEnter(e));
-        NameTxt.setOnKeyPressed(e->onEnter(e));
-        
+        EmailTxt.setOnKeyPressed(e->onEnter(e));
+        PassTxt.setOnKeyPressed(e->onEnter(e));
         
     }
     
 
     public void GoToHomePage() {
 
-//        Parent root;
-//        try {
-//            String name = NameTxt.getText();
-//            String IP = IPTxt.getText();
-//            String Port = PortTxt.getText();
-//            if(name.equals("") || name.replace(" ", "").length()==0  )
-//            {
-//                error.setText("please enter the name");
-//                error.setStyle("-fx-background-color: red;");
-//            }
-//            else if(IP.equals("") || IP.replace(" ", "").length()==0 || !VALID_IPV4_PATTERN.matcher(IP).matches() )
-//            {
-//             
-//                error.setText("please enter valid IP Address");
-//                error.setStyle("-fx-background-color: red;");
-//            }
-//            else if(Port.equals("") || Port.replace(" ", "").length()==0 || !VALID_PORT_NUMBER.matcher(Port).matches() )
-//            {
-//                error.setText("please enter valid Port Number");
-//                error.setStyle("-fx-background-color: red;");
-//            }
-//            else
-//            {
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(getClass().getResource("FXMLDocument.fxml"));
-//
-//
-//
-////                FXMLDocumentController controller = new FXMLDocumentController();
-////                controller.setUserName(name);
-////                controller.setIPAddress(IP);
-////                controller.setProtNum(Port);
-////                loader.setController(controller);
-////                root = loader.load();
-////                Stage stage = new Stage();
-////                stage.setScene(new Scene(root));
-////                stage.getIcons().add(new Image(FXMLDocumentController.class.getResourceAsStream("imgs/icon.png")));
-////                StartBtn.getScene().getWindow().hide();
-////                stage.setTitle("Regaletna Messenger");
-////                stage.setHeight(635);
-////                stage.setWidth(920);
-////                Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-////                stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2); 
-////                stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);
-////                stage.setResizable(false);
-////                stage.setOnCloseRequest(e -> closeWindow());
-////
-////                stage.show();
-//            }
-//
-//            
-//
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+        Parent root;
+        try {
+            String Email = EmailTxt.getText();
+            
+            String Pass = PassTxt.getText();
+            if(Email.equals("") || Email.replace(" ", "").length()==0 || !VALID_EMAIL_PATTERN.matcher(Email).matches() )
+            {
+                error.setText("please enter the correct Email Address");
+                error.setStyle("-fx-background-color: red;");
+            }
+            else if(Pass.equals("") || Pass.replace(" ", "").length()==0  )
+            {
+             
+                error.setText("please Don't leave the pass empty");
+                error.setStyle("-fx-background-color: red;");
+            }
+            else if (true)
+            {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("MainWindow.fxml"));
+
+
+
+                MainWindowController controller = new MainWindowController();
+                controller.setUserName(Email);
+                loader.setController(controller);
+                root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.getIcons().add(new Image(MainWindowController.class.getResourceAsStream("imgs/icon.png")));
+                StartBtn.getScene().getWindow().hide();
+                stage.setTitle("Cloud File Encryptor");
+                stage.setHeight(440);
+                stage.setWidth(770);
+                Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2); 
+                stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);
+                stage.setResizable(false);
+                stage.setOnCloseRequest(e -> closeWindow());
+
+                stage.show();
+            }
+            else
+            {
+                error.setText("incorrect Email or Password ");
+                error.setStyle("-fx-background-color: red;");
+            }
+
+            
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void closeWindow() {
