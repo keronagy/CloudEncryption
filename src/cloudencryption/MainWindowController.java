@@ -92,6 +92,7 @@ public class MainWindowController implements Initializable {
     public void UploadFile()
     {
         //TO DO upload file from this function
+        String FileToUpload = ChoosedFile.getText().toString();
     }
 }
     
