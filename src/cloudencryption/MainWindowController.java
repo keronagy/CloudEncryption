@@ -37,6 +37,8 @@ public class MainWindowController implements Initializable {
     private JFXButton ChooseBtn;
     @FXML
     private JFXButton ListFilesBtn;
+    @FXML
+    private JFXButton UploadBtn;
     
     private String Email;
     /**
@@ -70,11 +72,13 @@ public class MainWindowController implements Initializable {
         File file = dc.showDialog(null);
         if(file!=null)
         {
+            ListFiles.getItems().clear();
             File[] fList = file.listFiles();
 
             for (File f : fList)
             {
                 if (f.isFile()){
+                    
                     ListFiles.getItems().add(f.getAbsolutePath());
                 }
             }
@@ -84,6 +88,10 @@ public class MainWindowController implements Initializable {
     public void ClearList()
     {
         ListFiles.getItems().clear();
+    }
+    public void UploadFile()
+    {
+        //TO DO upload file from this function
     }
 }
     

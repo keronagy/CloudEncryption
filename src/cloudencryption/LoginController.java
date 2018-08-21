@@ -95,7 +95,7 @@ public class LoginController implements Initializable {
                 error.setStyle("-fx-background-color: red;");
             }
             else if (true)
-            {
+            { // Authorization here
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("MainWindow.fxml"));
 

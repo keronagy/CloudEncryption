@@ -39,7 +39,7 @@
     -fx-text-fill: -fx-primarytext;
 }
 .list-cell:even {
-    -fx-cell-hover-color: #fff;
+    -fx-cell-hover-color: #0093ff;
     -fx-background-color: -fx-primary;
     -fx-text-fill: -fx-primarytext;
 }

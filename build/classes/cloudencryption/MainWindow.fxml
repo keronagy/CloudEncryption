@@ -15,7 +15,7 @@
    </stylesheets>
    <children>
       <JFXTextField fx:id="ChoosedFile" editable="false" layoutX="14.0" layoutY="35.0" prefHeight="15.0" prefWidth="315.0" />
-      <JFXButton fx:id="ChooseBtn" layoutX="342.0" layoutY="41.0" onAction="#ChooseFile" text="Choose" />
+      <JFXButton fx:id="ChooseBtn" layoutX="342.0" layoutY="42.0" onAction="#ChooseFile" text="Choose" />
       <Pane layoutX="555.0" layoutY="14.0" prefHeight="79.0" prefWidth="200.0" style="-fx-border-color: #fff; -fx-border-radius: 0.2cm;">
          <children>
             <Label layoutX="19.0" layoutY="14.0" text="ID:" textFill="WHITE" />
@@ -27,5 +27,6 @@
       <JFXListView fx:id="ListFiles" layoutX="555.0" layoutY="107.0" prefHeight="244.0" prefWidth="200.0" style="-fx-background-color: #2e2f30; -fx-border-color: #fff; -fx-border-radius: 0.2cm;" />
       <JFXButton fx:id="ListFilesBtn" layoutX="677.0" layoutY="361.0" onAction="#ChooseDirectory" text="List Files" />
       <JFXButton fx:id="ClearBtn" layoutX="606.0" layoutY="361.0" onAction="#ClearList" text="Clear" />
+      <JFXButton fx:id="UploadBtn" layoutX="34.0" layoutY="107.0" onAction="#UploadFile" text="Upload" />
    </children>
 </AnchorPane>
